@@ -1,0 +1,8 @@
+[
+  ["ETH", "BTC"],
+  ["LTC", "BTC"],
+  ["ETH", "USDT"],
+  ["BTC", "USDT"],
+  ["USDT", "BTC"],
+  ["LTC", "USDT"]
+]

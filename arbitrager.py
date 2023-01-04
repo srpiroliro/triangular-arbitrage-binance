@@ -111,7 +111,6 @@ symbols=None
 paths=None
 
 cnt=0
-target=20000
 
 start_counter=time.time()
 sub_start=0
@@ -121,6 +120,7 @@ time_it=[]
 # output all profits wich are bigger than `output_x_profits`
 output_x_profits=0.005 # 0.5%
 starting="usd"
+target=20000
 
 if __name__ == "__main__":
     print("getting symbols...")

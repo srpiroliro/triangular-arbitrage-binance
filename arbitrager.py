@@ -1,7 +1,5 @@
 import websocket,json,requests,time
 
-BASE_URL="wss://stream.binance.com:443/ws"
-
 def get_symbols():
     symbols_req=requests.get(url="https://api.binance.com/api/v3/exchangeInfo")
     symbols=[]
@@ -41,7 +39,6 @@ def make_paths(symbols,starting=""):
                             ]
                         })
     return paths
-
 
 def on_message(ws, message):
     global sub_start,cnt
@@ -104,8 +101,11 @@ def on_open(ws):
     ws.send(json.dumps({"method": "SUBSCRIBE","params": ["!ticker@arr"],"id": 1}))
     sub_start=time.time()
 # def on_error(ws, error): print("ERROR:",error)
-def on_close(ws, close_status_code, close_msg): print(f"# # # connection to \"{BASE_URL}\" CLOSED # # #")
+def on_close(ws, close_status_code, close_msg): 
+    print(f"# # # connection to \"{BASE_URL}\" CLOSED # # #")
 
+
+BASE_URL="wss://stream.binance.com:443/ws"
 
 symbols=None
 paths=None
@@ -113,14 +113,14 @@ paths=None
 cnt=0
 target=20000
 
-# output all profits wich are bigger than `output_x_profits`
-output_x_profits=0.005 # 0.5%
-starting="usd"
-
-start_counter=time.time() #perf_counter()
+start_counter=time.time()
 sub_start=0
 findings=[]
 time_it=[]
+
+# output all profits wich are bigger than `output_x_profits`
+output_x_profits=0.005 # 0.5%
+starting="usd"
 
 if __name__ == "__main__":
     print("getting symbols...")
@@ -131,7 +131,6 @@ if __name__ == "__main__":
     paths=make_paths(symbols,starting)
     print(len(paths),"paths were generated!\n")
 
-    
     try:
         ws=websocket.WebSocketApp(BASE_URL,
                                 on_open=on_open,
@@ -141,12 +140,12 @@ if __name__ == "__main__":
         ws.run_forever()
     except Exception as e: print("stopped!")
     finally:
-        stop_counter=time.time() #perf_counter()
+        stop_counter=time.time()
         print(f"\ntook {stop_counter-start_counter} seconds\n")
         
         print(f"got {len(findings)} profits bigger than {output_x_profits*100}%: ")
         for fi in findings:
-            print(f"\t{round(fi[2]*100, 4)}%   [{' -> '.join(fi[1])}]") # {datetime.fromtimestamp(fi[0])} - 
+            print(f"\t{round(fi[2]*100, 4)}%   [{' -> '.join(fi[1])}]") 
         
         if time_it:
             print(f"\ntook on avarage: {round(sum(time_it)/len(time_it), 4)}sec")

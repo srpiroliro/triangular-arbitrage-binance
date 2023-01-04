@@ -1,7 +1,7 @@
 # Triangular Arbitrage Binance
 
 ## Disclaimer
-This version *ignores volume* completly, meaming the returned profit rates aren't real/sustainable. 
+This version **ignores volume** completly, meaming the returned profit rates aren't real/sustainable. 
 
 ## What it does?
 > Arbitrage: the simultaneous buying and selling of securities, currency, or commodities in different markets or in derivative forms in order to take advantage of differing prices for the same asset.

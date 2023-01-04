@@ -11,7 +11,7 @@ This version **ignores volume** completly, meaming the returned profit rates are
 In this case, we are going to scan for triangular arbitrage opportunities on Binance. 
 
 Firstly by creating all possible combinations/paths of triangular arbitrage opportunities. 
-And later on, each second cehck the price of each pari and calculate the final profit.
+And later on, each second check the price of each pair and calculate the final profit.
 
 
 ## How to use:
